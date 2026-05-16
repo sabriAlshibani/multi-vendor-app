@@ -11,11 +11,24 @@
         <h1>Dashboard</h1>
         <p>Welcome to your dashboard!</p>
         <button id="logout-btn">Logout</button>
+        <div>
+            <h2>sliders part</h2>
+            <form id="slider_form">
+                <input type="text" placeholder="input first title" id="slider_title1">
+                <input type="text" placeholder="input seconded title" id="slider_title2">
+                <textarea id="slider_description" placeholder="slider description"></textarea>
+                <input type="text" placeholder="input the link" id="slider_link">
+                <input type="file" id="slider_image">
+                <img src="" id="slider_image_preview">
+                <button type="submit">send</button>
+            </form>
+        </div>
     </div>
     
     <script type="module" src="js/firebase-config.js"></script>
     <script type="module" src="js/auth-guard.js"></script>
     <script type="module" src="js/auth.js"></script>
     <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/dashboard.js"></script>
 </body>
 </html>
