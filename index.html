@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
   <head>
-
     <meta charset="UTF-8" />
     <title>الربط مع Firebase</title>
     <link rel="stylesheet" href="css/main.css" />
@@ -45,9 +44,6 @@
         </div>
       </div>
 
-      <!-- =========================
-           MIDDLE NAVBAR
-      ========================== -->
       <div class="mid-nav">
         <div class="container">
           <!-- LOGO -->
@@ -76,6 +72,9 @@
             <div class="icon account">
               <img src="images/account-icon.png" alt="" />
             </div>
+          </div>
+          <div class="account-menu">
+            <button id="logout-btn">logout</button>
           </div>
         </div>
       </div>
@@ -109,20 +108,21 @@
     </header>
 
     <section class="hero-area">
-
       <div class="hero-sliders">
         <!-- PREVIOUS BUTTON -->
-        <button class="slider-btn prev">
+        <button class="slider-btn prev hidden">
           <img src="images/arrow-right-icon.png" alt="" />
         </button>
-
+        <div id="loading-container" class="loader-container">
+          <div class="spinner"></div>
+          <p>Loading data...</p>
+        </div>
         <div class="slider-wrapper">
-          <div class="slider-track">
-          </div>
+          <div class="slider-track hidden"></div>
         </div>
 
         <!-- NEXT BUTTON -->
-        <button class="slider-btn next">
+        <button class="slider-btn next hidden">
           <img src="images/arrow-left-icon.png" alt="" />
         </button>
 
@@ -205,7 +205,6 @@
         </div>
       </aside>
     </section>
-    <button id="logout-btn">logout</button>
 
     <script type="module" src="js/firebase-config.js"></script>
     <script type="module" src="js/auth-guard.js"></script>

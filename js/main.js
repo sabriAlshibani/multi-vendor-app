@@ -50,7 +50,7 @@ const makeMidleNavSticky = () => {
     });
   }
 };
-
+  const accountIcon = document.querySelector(".account img")
 const showCategorySidebar = () => {
   const cateButton = document.querySelector(".cate-button");
   const categorySidebar = document.querySelector(".category-sidebar");
@@ -66,7 +66,6 @@ onAuthStateChanged(auth, async (user) => {
   if (user) {
     const userRef = doc(db, "users", user.uid);
     const userSnap = await getDoc(userRef);
-
     if (!userSnap.exists()) {
       await setDoc(userRef, {
         uid: user.uid,
@@ -77,33 +76,31 @@ onAuthStateChanged(auth, async (user) => {
         createdAt: Date.now(),
       });
     }
+    console.log(user)
+    accountIcon.src= user.photoURL;
   } else {
     console.log("No user is signed in.");
   }
 });
-
 
 showLanguageMenu();
 showMoneyMenu();
 makeMidleNavSticky();
 showCategorySidebar();
 
-
 const prevBtn = document.querySelector(".prev");
 const nextBtn = document.querySelector(".next");
 const track = document.querySelector(".slider-track");
 const sliderDots = document.querySelector(".slider-dots");
+const loaderContainer = document.querySelector("#loading-container");
 
 let currentSlider = 0;
 
 async function showSliders() {
-  const querySnapshot = await getDocs(
-    collection(db, "sliders")
-  );
-
+  const querySnapshot = await getDocs(collection(db, "sliders"));
+  track.classList.add("hidden");
   querySnapshot.forEach((doc) => {
     const data = doc.data();
-
     const sliderContainer = document.createElement("div");
     sliderContainer.className = "slider";
 
@@ -116,32 +113,23 @@ async function showSliders() {
     const title = document.createElement("h2");
     title.className = "title";
 
-    title.innerHTML =
-      `${data.title1}<br>${data.title2}`;
+    title.innerHTML = `${data.title1}<br>${data.title2}`;
 
-    const description =
-      document.createElement("p");
+    const description = document.createElement("p");
 
-    description.className =
-      "description";
+    description.className = "description";
 
-    description.innerText =
-      data.description;
+    description.innerText = data.description;
 
-    const button =
-      document.createElement("button");
+    const button = document.createElement("button");
 
-    button.className =
-      "get-order-btn";
+    button.className = "get-order-btn";
 
-    button.innerText =
-      data.link;
+    button.innerText = data.link;
 
-    const image =
-      document.createElement("img");
+    const image = document.createElement("img");
 
-    image.src =
-      data.imageUrl;
+    image.src = data.imageUrl;
 
     rightContent.appendChild(title);
     rightContent.appendChild(description);
@@ -154,16 +142,18 @@ async function showSliders() {
 
     track.appendChild(sliderContainer);
   });
+  console.log(loaderContainer);
+  loaderContainer.classList.add("hidden");
+  track.classList.remove("hidden");
+  prevBtn.classList.remove("hidden");
+  nextBtn.classList.remove("hidden");
 }
 
 function createSliderDots(slides) {
-
   sliderDots.innerHTML = "";
 
   slides.forEach((_, index) => {
-
-    const dot =
-      document.createElement("div");
+    const dot = document.createElement("div");
 
     dot.dataset.index = index;
 
@@ -173,102 +163,58 @@ function createSliderDots(slides) {
 
     sliderDots.appendChild(dot);
   });
-
 }
 
-function updateCurrentSlider(
-  slides,
-  sliderDotItems
-) {
-
-  track.style.transform =
-    `translateX(${currentSlider * 100}%)`;
+function updateCurrentSlider(slides, sliderDotItems) {
+  track.style.transform = `translateX(${currentSlider * 100}%)`;
 
   sliderDotItems.forEach((dot) => {
     dot.classList.remove("highlight");
   });
 
-  sliderDotItems[currentSlider]
-    ?.classList.add("highlight");
+  sliderDotItems[currentSlider]?.classList.add("highlight");
 }
 
 async function initSlider() {
-
   await showSliders();
 
-  const slides =
-    document.querySelectorAll(".slider");
+  const slides = document.querySelectorAll(".slider");
 
   createSliderDots(slides);
 
-  const sliderDotItems =
-    document.querySelectorAll(
-      ".slider-dots div"
-    );
+  const sliderDotItems = document.querySelectorAll(".slider-dots div");
 
-  nextBtn?.addEventListener(
-    "click",
-    () => {
+  nextBtn?.addEventListener("click", () => {
+    currentSlider++;
 
-      currentSlider++;
-
-      if (
-        currentSlider >=
-        slides.length
-      ) {
-        currentSlider = 0;
-      }
-
-      updateCurrentSlider(
-        slides,
-        sliderDotItems
-      );
-
+    if (currentSlider >= slides.length) {
+      currentSlider = 0;
     }
-  );
 
-  prevBtn?.addEventListener(
-    "click",
-    () => {
-
-      currentSlider--;
-
-      if (
-        currentSlider < 0
-      ) {
-        currentSlider =
-          slides.length - 1;
-      }
-
-      updateCurrentSlider(
-        slides,
-        sliderDotItems
-      );
-
-    }
-  );
-
-  sliderDotItems.forEach((dot) => {
-
-    dot.addEventListener(
-      "click",
-      () => {
-
-        currentSlider =
-          Number(
-            dot.dataset.index
-          );
-
-        updateCurrentSlider(
-          slides,
-          sliderDotItems
-        );
-
-      }
-    );
-
+    updateCurrentSlider(slides, sliderDotItems);
   });
 
+  prevBtn?.addEventListener("click", () => {
+    currentSlider--;
+
+    if (currentSlider < 0) {
+      currentSlider = slides.length - 1;
+    }
+
+    updateCurrentSlider(slides, sliderDotItems);
+  });
+
+  sliderDotItems.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      currentSlider = Number(dot.dataset.index);
+
+      updateCurrentSlider(slides, sliderDotItems);
+    });
+  });
 }
 
 initSlider();
+
+function showUserAccount() {
+
+}

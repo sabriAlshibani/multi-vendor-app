@@ -420,6 +420,7 @@ body {
   font-weight: 600;
   border-radius: 2px;
   cursor: pointer;
+  z-index: 1;
 }
 
 .nav .cate-button div {
@@ -453,6 +454,7 @@ body {
 .mid-nav {
   padding: 6px 0;
   background-color: var(--bg-white);
+  position: relative;
 }
 
 .mid-nav .container {
@@ -501,13 +503,24 @@ body {
   justify-content: center;
   background-color: var(--bg-soft);
   border-radius: 100%;
+  cursor: pointer;
 } 
 
 .mid-nav-icons .icon img {
   width: 30px;
   height: 30px;
+  border-radius: 100%;
 }
 
+.account-menu {
+  position: absolute;
+  z-index: 99999;
+  bottom: 0;
+  left: 30px;
+  width: 100px;
+  background-color: var(--primary-color);
+  z-index: 2;
+}
 /* Hero Area */
 
 /* Category Slidebar */
@@ -694,4 +707,48 @@ body {
 
 .add-height {
   height: 400px;
+}
+/* Center the loader container in the middle of the screen */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Takes full screen height */
+  color: #333;
+}
+
+/* The Spinner Element */
+.spinner {
+  width: 50px;
+  height: 50px;
+  
+  /* Create a perfect circle */
+  border-radius: 50%;
+  
+  /* Light gray border for the entire circle track */
+  border: 5px solid #f3f3f3;
+  
+  /* Blue border for the spinning indicator part */
+  border-top: 5px solid var(--primary-color);
+  
+  /* Tell it to run the 'spin' animation infinitely */
+  animation: spin 1s linear infinite;
+  
+  margin-bottom: 15px;
+}
+
+/* Define the spinning animation */
+@keyframes spin {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+
+/* Helper class to easily hide the loader via JavaScript */
+.hidden {
+  display: none !important;
 }
