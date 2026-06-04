@@ -776,3 +776,143 @@ body {
   font-size: 28px;
   font-weight: 600;
 }
+
+.hamburger-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+.hamburger-btn svg {
+  vertical-align: middle;
+}
+
+/* =========================
+   RESPONSIVE DESIGN (GLOBAL)
+========================= */
+
+@media (max-width: 1024px) {
+  .container {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .slider .left-image {
+    flex: 0.5;
+  }
+  .slider .right-content {
+    flex: 0.5;
+  }
+  .slider .right-content .title {
+    font-size: 32px;
+  }
+  .slider .right-content .description {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mid-nav .container {
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .logo {
+    flex: initial;
+  }
+
+  .mid-nav-icons {
+    flex: initial;
+    gap: 15px;
+  }
+
+  .search-bar {
+    flex: 100%;
+    order: 3;
+    display: flex;
+    justify-content: center;
+  }
+  .search-bar input {
+    width: 100%;
+  }
+
+  .hamburger-btn {
+    display: block;
+    margin-right: auto;
+  }
+
+  .nav .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .nav .navigation {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+  }
+  .nav .navigation.active {
+    display: flex;
+  }
+  
+  .nav .navigation li a {
+    font-size: 16px;
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .nav .cate-button {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+
+  }
+
+  .hero-sliders {
+    position: relative;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .slider {
+    flex-direction: column;
+  }
+  
+  .slider .left-image {
+    width: 100%;
+  }
+  .slider .left-image img {
+    height: 250px;
+  }
+  .slider .right-content {
+    width: 100%;
+    text-align: center;
+    padding: 20px 10px;
+  }
+  
+  .slider-btn {
+    width: 40px;
+    height: 40px;
+  }
+  .slider-btn img {
+    width: 25px;
+    height: 25px;
+  }
+  .prev { right: 5px; }
+  .next { left: 5px; }
+  
+  .category-sidebar {
+    display: block;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+  }
+}

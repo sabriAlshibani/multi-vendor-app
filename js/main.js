@@ -232,3 +232,15 @@ function showUserAccount() {
   }
 }
 showUserAccount();
+
+const showMobileNavigation = () => {
+  const hamburgerBtn = document.querySelector("#hamburger-btn");
+  const navigation = document.querySelector(".nav .navigation");
+
+  if (hamburgerBtn && navigation) {
+    hamburgerBtn.addEventListener("click", () => {
+      navigation.classList.toggle("active");
+    });
+  }
+};
+showMobileNavigation();

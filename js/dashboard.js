@@ -123,7 +123,7 @@ function showBannersContent() {
   const sliderImage = clone.getElementById("slider_image");
   const imagePreview = clone.getElementById("slider_image_preview");
   const uploadIcon = clone.querySelector(".upload-icon");
-  uploadBannerImage(imageBox,sliderImage,imagePreview,uploadIcon);
+  uploadBannerImage(imageBox, sliderImage, imagePreview, uploadIcon);
 }
 
 function uploadBannerImage(imageBox, sliderImage, imagePreview, uploadIcon) {
@@ -146,3 +146,11 @@ function uploadBannerImage(imageBox, sliderImage, imagePreview, uploadIcon) {
 }
 
 console.log(navigator.onLine)
+
+function exitDashboard() {
+  const exitBtn = document.querySelector(".exit-btn")
+  exitBtn.onclick = () => {
+    window.location.pathname = "index.html"
+  }
+}
+exitDashboard()

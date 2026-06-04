@@ -1,107 +1,105 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dashboard</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css//dashboard.css" />
-  </head>
-  <body>
-    <div class="dashboard-container">
-      <nav class="dash-nav">navbar</nav>
-      <aside class="dash-aside">
-        <div class="aside-logo">
-          <img src="/images/logo.png" alt="" />
-          موقع اوفر متعدد البيع
-        </div>
-        <div class="aside-items">
-          <button class="aside-item" data-key="home">
-            <img src="/images/home-icon.png" alt="" />
-            الرئيسية
-          </button>
-          <button class="aside-item" data-key="users">
-            <img src="/images/users-icon.png" alt="" />
-            المستخدمين
-          </button>
-          <button class="aside-item" data-key="markets">
-            <img src="/images/market-icon.png" alt="" />
-            المتاجر
-          </button>
-          <button class="aside-item" data-key="products">
-            <img src="/images/product-icon.png" alt="" />
-            المنتجات
-          </button>
-          <button class="aside-item" data-key="banners">
-            <img src="/images/slide-icon.png" alt="" />
-            البانرز
-          </button>
-          <button class="aside-item" data-key="reports">
-            <img src="/images/report-icon.png" alt="" />
-            التقارير
-          </button>
-          <button class="aside-item" data-key="categories">
-            <img src="/images/category-icon.png" alt="" />
-            الأصناف
-          </button>
-          <button class="aside-item" data-key="orders">
-            <img src="/images/order-icon.png" alt="" />
-            الطلبات
-          </button>
-          <button class="aside-item" data-key="rating">
-            <img src="/images/rating-icon.png" alt="" />
-            التقييمات
-          </button>
-        </div>
-      </aside>
-      <main class="dash-main">
-        <template id="banners-template">
-          <section class="banner-inputs">
-            <div class="header">
-              <h2 class="label">اضافة بانر جديد</h2>
-            </div>
-            <form id="slider_form">
-              <div class="titles">
-                <input
-                  type="text"
-                  placeholder="input first title"
-                  id="slider_title1"
-                />
-                <input
-                  type="text"
-                  placeholder="input seconded title"
-                  id="slider_title2"
-                />
-              </div>
-              <textarea
-                id="slider_description"
-                class="description-input"
-                placeholder="slider description"
-              ></textarea>
-              <div class="image-box">
-                <input type="file" id="slider_image" />
-                <img src="/images/upload-icon.png" alt="" class="upload-icon">
-                <img src="" id="slider_image_preview" class="image-preview" />
-              </div>
-              <div class="create-and-link">
-                <input
-                  type="text"
-                  placeholder="input the link"
-                  id="slider_link"
-                />
-                <button type="submit">انشاء</button>
-              </div>
-            </form>
-          </section>
-        </template>
-      </main>
-      <footer class="footer">footer</footer>
-    </div>
 
-    <script type="module" src="js/firebase-config.js"></script>
-    <script type="module" src="js/auth-guard.js"></script>
-    <script type="module" src="js/auth.js"></script>
-    <script type="module" src="js/main.js"></script>
-    <script type="module" src="js/dashboard.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dashboard</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css//dashboard.css" />
+</head>
+
+<body>
+  <div class="dashboard-container">
+    <nav class="dash-nav">
+      <div class="nav-title">لوحة التحكم</div>
+      <div class="nav-actions">
+        <div class="admin-profile">
+          <img src="/images/account-icon.png" alt="Admin" />
+          <span>المسؤول</span>
+        </div>
+        <button class="exit-btn">خروج</button>
+      </div>
+    </nav>
+    <aside class="dash-aside">
+      <div class="aside-logo">
+        <img src="/images/logo.png" alt="" />
+        موقع اوفر متعدد البيع
+      </div>
+      <div class="aside-items">
+        <button class="aside-item active" data-key="home">
+          <img src="/images/home-icon.png" alt="" />
+          الرئيسية
+        </button>
+        <button class="aside-item" data-key="users">
+          <img src="/images/users-icon.png" alt="" />
+          المستخدمين
+        </button>
+        <button class="aside-item" data-key="markets">
+          <img src="/images/market-icon.png" alt="" />
+          المتاجر
+        </button>
+        <button class="aside-item" data-key="products">
+          <img src="/images/product-icon.png" alt="" />
+          المنتجات
+        </button>
+        <button class="aside-item" data-key="banners">
+          <img src="/images/slide-icon.png" alt="" />
+          البانرز
+        </button>
+        <button class="aside-item" data-key="reports">
+          <img src="/images/report-icon.png" alt="" />
+          التقارير
+        </button>
+        <button class="aside-item" data-key="categories">
+          <img src="/images/category-icon.png" alt="" />
+          الأصناف
+        </button>
+        <button class="aside-item" data-key="orders">
+          <img src="/images/order-icon.png" alt="" />
+          الطلبات
+        </button>
+        <button class="aside-item" data-key="rating">
+          <img src="/images/rating-icon.png" alt="" />
+          التقييمات
+        </button>
+      </div>
+    </aside>
+    <main class="dash-main">
+      <template id="banners-template">
+        <section class="banner-inputs">
+          <div class="header">
+            <h2 class="label">اضافة بانر جديد</h2>
+          </div>
+          <form id="slider_form">
+            <div class="titles">
+              <input type="text" placeholder="input first title" id="slider_title1" />
+              <input type="text" placeholder="input seconded title" id="slider_title2" />
+            </div>
+            <textarea id="slider_description" class="description-input" placeholder="slider description"></textarea>
+            <div class="image-box">
+              <input type="file" id="slider_image" />
+              <img src="/images/upload-icon.png" alt="" class="upload-icon">
+              <img src="" id="slider_image_preview" class="image-preview" />
+            </div>
+            <div class="create-and-link">
+              <input type="text" placeholder="input the link" id="slider_link" />
+              <button type="submit">انشاء</button>
+            </div>
+          </form>
+        </section>
+      </template>
+    </main>
+    <footer class="footer">
+      <p>جميع الحقوق محفوظة &copy; 2026 موقع أوفر</p>
+    </footer>
+  </div>
+
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/auth-guard.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+
 </html>
