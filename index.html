@@ -20,10 +20,10 @@
               <div class="lg-icon">
                 <button class="lg-button">اللغة</button>
 
-                <div class="lg-content">
-                  <p class="lg-item">العربية</p>
-                  <p class="lg-item">الإنجليزية</p>
-                  <p class="lg-item">الفرنسية</p>
+                <div class="lg-content menu hidden">
+                  <button class="lg-item menu-item">العربية</button>
+                  <button class="lg-item menu-item">الإنجليزية</button>
+                  <button class="lg-item menu-item">الفرنسية</button>
                 </div>
               </div>
             </div>
@@ -33,10 +33,10 @@
               <div class="lg-icon">
                 <button class="m-button">العملة</button>
 
-                <div class="m-content">
-                  <p class="m-item">USD</p>
-                  <p class="m-item">SAR</p>
-                  <p class="m-item">RYL</p>
+                <div class="m-content menu hidden">
+                  <button class="m-item menu-item">USD</button>
+                  <button class="m-item menu-item">SAR</button>
+                  <button class="m-item menu-item">RYL</button>
                 </div>
               </div>
             </div>
@@ -73,15 +73,24 @@
               <img src="images/account-icon.png" alt="" />
             </div>
           </div>
-          <div class="account-menu">
-            <button id="logout-btn">logout</button>
+          <div class="account-menu menu hidden">
+            <button id="logout-btn" class="menu-item">
+              <img src="/images/logout-icon.png" alt="" />
+              تسجيل الخروج
+            </button>
+
+            <button class="menu-item">
+              <img src="/images/information-icon.png" alt="" />
+              معلومات الحساب
+            </button>
+            <button id="dashboard-btn" class="menu-item hidden">
+              <img src="/images/dashboard-icon.png" alt="" />
+              لوحة التخكم
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- =========================
-           MAIN NAVBAR
-      ========================== -->
       <nav class="nav">
         <div class="container">
           <!-- NAVIGATION LINKS -->
@@ -116,6 +125,12 @@
         <div id="loading-container" class="loader-container">
           <div class="spinner"></div>
           <p>Loading data...</p>
+        </div>
+        <div class="online-status hidden">
+          <div class="status-message">
+            <img src="/images/warning-icon.png" alt="" />
+            <h3 class="status-text">ليس هناك اتصل بالانترنت</h3>
+          </div>
         </div>
         <div class="slider-wrapper">
           <div class="slider-track hidden"></div>

@@ -19,8 +19,7 @@ const showLanguageMenu = () => {
 
   if (lgButton && lgContent) {
     lgButton.onclick = () => {
-      lgContent.style.display =
-        lgContent.style.display === "flex" ? "none" : "flex";
+      lgContent.classList.toggle("hidden");
     };
   }
 };
@@ -31,8 +30,7 @@ const showMoneyMenu = () => {
 
   if (mButton && mContent) {
     mButton.onclick = () => {
-      mContent.style.display =
-        mContent.style.display === "flex" ? "none" : "flex";
+      mContent.classList.toggle("hidden");
     };
   }
 };
@@ -50,7 +48,7 @@ const makeMidleNavSticky = () => {
     });
   }
 };
-  const accountIcon = document.querySelector(".account img")
+const accountIcon = document.querySelector(".account img");
 const showCategorySidebar = () => {
   const cateButton = document.querySelector(".cate-button");
   const categorySidebar = document.querySelector(".category-sidebar");
@@ -76,8 +74,8 @@ onAuthStateChanged(auth, async (user) => {
         createdAt: Date.now(),
       });
     }
-    console.log(user)
-    accountIcon.src= user.photoURL;
+    console.log(user);
+    accountIcon.src = user.photoURL;
   } else {
     console.log("No user is signed in.");
   }
@@ -99,6 +97,13 @@ let currentSlider = 0;
 async function showSliders() {
   const querySnapshot = await getDocs(collection(db, "sliders"));
   track.classList.add("hidden");
+  if (!navigator.onLine) {
+    const onlineStatus = document.querySelector(".online-status")
+    onlineStatus.classList.remove("hidden")
+    loaderContainer.classList.add("hidden");
+    return
+  }
+  
   querySnapshot.forEach((doc) => {
     const data = doc.data();
     const sliderContainer = document.createElement("div");
@@ -216,5 +221,14 @@ async function initSlider() {
 initSlider();
 
 function showUserAccount() {
-
+  const accountIcon = document.querySelector(".account");
+  const accountMenu = document.querySelector(".account-menu");
+  console.log(accountIcon);
+  console.log(accountMenu);
+  if (accountIcon && accountMenu) {
+    accountIcon.onclick = () => {
+      accountMenu.classList.toggle("hidden");
+    };
+  }
 }
+showUserAccount();

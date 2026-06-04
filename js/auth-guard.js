@@ -57,17 +57,13 @@ async function authorizeUser(userId, isDashboardPage) {
     return;
   }
 
-  const topNav = document.querySelector(".top-nav .container");
 
-  if (isAdmin && topNav) {
-    const dashboardBtn = document.createElement("button");
-
-    dashboardBtn.innerText = "لوحة التحكم";
-
+  if (isAdmin) {
+    const dashboardBtn = document.getElementById("dashboard-btn");
+    dashboardBtn.classList.remove("hidden")
     dashboardBtn.onclick = () => {
       window.location.href = "dashboard.html";
     };
 
-    topNav.appendChild(dashboardBtn);
   }
 }

@@ -46,28 +46,103 @@ async function uploadImage() {
   }
 }
 
-sliderForm.onsubmit = async (e) => {
-  e.preventDefault();
-  const sliderTitle1 = document.getElementById("slider_title1").value;
-  const sliderTitle2 = document.getElementById("slider_title2").value;
-  const sliderDescription = document.getElementById("slider_description").value;
-  const sliderLink = document.getElementById("slider_link").value;
-  const sliderImagePreview = document.getElementById("slider_image_preview");
-  const imageUrl = await uploadImage();
-  if (
-    imageUrl !== null &&
-    sliderTitle1 !== "" &&
-    (sliderTitle2 !== "") & (sliderDescription !== "")
-  ) {
-    addDoc(collection(db, "sliders"), {
-      title1: sliderTitle1,
-      title2: sliderTitle2,
-      description: sliderDescription,
-      link: sliderLink,
-      imageUrl: imageUrl,
-      create_at: Date.now(),
-    });
-  }
+// sliderForm.onsubmit = async (e) => {
+//   e.preventDefault();
+//   const sliderTitle1 = document.getElementById("slider_title1").value;
+//   const sliderTitle2 = document.getElementById("slider_title2").value;
+//   const sliderDescription = document.getElementById("slider_description").value;
+//   const sliderLink = document.getElementById("slider_link").value;
+//   const sliderImagePreview = document.getElementById("slider_image_preview");
+//   const imageUrl = await uploadImage();
+//   if (
+//     imageUrl !== null &&
+//     sliderTitle1 !== "" &&
+//     (sliderTitle2 !== "") & (sliderDescription !== "")
+//   ) {
+//     addDoc(collection(db, "sliders"), {
+//       title1: sliderTitle1,
+//       title2: sliderTitle2,
+//       description: sliderDescription,
+//       link: sliderLink,
+//       imageUrl: imageUrl,
+//       create_at: Date.now(),
+//     });
+//   }
 
-  console.log("image url", imageUrl);
-};
+//   console.log("image url", imageUrl);
+// };
+const dashboardMain = document.querySelector(".dash-main");
+
+function navigateDashboard() {
+  const navigationItems = document.querySelectorAll(".aside-item");
+  navigationItems.forEach((item) => {
+    item.onclick = function () {
+      const linkKey = this.dataset.key;
+      console.log(linkKey);
+      navigationItems.forEach((i) => {
+        i.classList.remove("aside-item-focused");
+      });
+      item.classList.add("aside-item-focused");
+
+      switch (linkKey) {
+        case "home": {
+        }
+        case "users": {
+        }
+        case "markets": {
+        }
+        case "products": {
+        }
+        case "banners": {
+          showBannersContent();
+        }
+        case "categories": {
+        }
+        case "reports": {
+        }
+        case "orders": {
+        }
+        case "rating": {
+        }
+        default: {
+        }
+      }
+    };
+  });
+}
+navigateDashboard();
+
+function showBannersContent() {
+  const template = document.getElementById("banners-template");
+  const clone = template.cloneNode(true);
+  const sliderForm = clone.getElementById("slider_form");
+  const title1 = clone.getElementById("slider_title1");
+  const title2 = clone.getElementById("slider_title2");
+  const sliderDescription = clone.getElementById("slider_description");
+  const imageBox = clone.querySelector(".image-box");
+  const sliderImage = clone.getElementById("slider_image");
+  const imagePreview = clone.getElementById("slider_image_preview");
+  const uploadIcon = clone.querySelector(".upload-icon");
+  uploadBannerImage(imageBox,sliderImage,imagePreview,uploadIcon);
+}
+
+function uploadBannerImage(imageBox, sliderImage, imagePreview, uploadIcon) {
+  if (imageBox && sliderImage) {
+    imageBox.onclick = () => {
+      sliderImage.click();
+    };
+  }
+  sliderImage.onchange = (envent) => {
+    const file = envent.target.files[0];
+    if (!file) {
+      return;
+    }
+    const url = URL.createObjectURL(file);
+    imagePreview.src = url;
+    console.log(url);
+    uploadIcon.classList.add("hidden");
+    console.log(uploadIcon);
+  };
+}
+
+console.log(navigator.onLine)
