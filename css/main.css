@@ -613,7 +613,8 @@ body {
 
 .slider {
   min-width: 100%;
-  background-color: var(--bg-slider);
+  background: #3F5EFB;
+  background: linear-gradient(325deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
   margin: 10px 0 0 0;
   display: flex;
   row-gap: 8%;
@@ -629,11 +630,13 @@ body {
   font-size: 44px;
   font-weight: 800;
   margin-bottom: 14px;
+  color: white;
 }
 
 .slider .right-content .description {
   font-size: 28px;
   margin-bottom: 40px;
+  color: white;
 }
 
 .slider .left-image {
@@ -713,7 +716,7 @@ body {
 .slider-dots div {
   width: 25px;
   height: 10px;
-  background-color: var(--text-gray);
+  background-color: white;
   cursor: pointer;
   border-radius: 4px;
 }
@@ -793,6 +796,7 @@ body {
   cursor: pointer;
   padding: 5px;
 }
+
 .hamburger-btn svg {
   vertical-align: middle;
 }
@@ -870,7 +874,7 @@ body {
     margin-top: 10px;
     gap: 10px;
   }
-  
+
   .nav .navigation.active {
     display: flex;
   }
@@ -879,7 +883,7 @@ body {
     font-size: 16px;
     display: block;
     padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .nav .cate-button {
@@ -938,4 +942,59 @@ body {
     top: 0;
     z-index: 1000;
   }
+}
+
+
+.vendor-message-hidden {
+  width: 400px;
+  background-color: white;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  padding: 20px;
+  z-index: 99999;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -6px 4px 43px 13px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transform: translateY(-400%);
+  transition: all 1s;
+
+}
+
+.vendor-message-hidden h3 {
+  font-size: 24px;
+  margin-bottom: 4px;
+  color: var(--primary-color);
+}
+
+.vendor-message-hidden p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.vendor-message-hidden button {
+  font-size: 16px;
+  background-color: var(--primary-transparent);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.vendor-message-hidden button:hover {
+  background-color: var(--primary-color);
+}
+
+.vendor-message-modal {
+  transform: translateY(0);
+  transform: translateX(-50%);
+
+
 }

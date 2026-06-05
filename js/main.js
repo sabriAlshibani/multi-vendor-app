@@ -40,7 +40,7 @@ const makeMidleNavSticky = () => {
 
   if (middNav) {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 600) {
         middNav.classList.add("sticky-mid-nav");
       } else {
         middNav.classList.remove("sticky-mid-nav");
@@ -71,11 +71,15 @@ onAuthStateChanged(auth, async (user) => {
         email: user.email,
         image: user.photoURL || "",
         role: "user",
+        phone: "",
+        addresses: [],
         createdAt: Date.now(),
       });
     }
     console.log(user);
-    accountIcon.src = user.photoURL;
+    if (accountIcon) {
+      accountIcon.src = user.photoURL;
+    }
   } else {
     console.log("No user is signed in.");
   }
@@ -95,6 +99,7 @@ const loaderContainer = document.querySelector("#loading-container");
 let currentSlider = 0;
 
 async function showSliders() {
+  if (!track) return;
   const querySnapshot = await getDocs(collection(db, "sliders"));
   track.classList.add("hidden");
   if (!navigator.onLine) {
@@ -103,7 +108,7 @@ async function showSliders() {
     loaderContainer.classList.add("hidden");
     return
   }
-  
+
   querySnapshot.forEach((doc) => {
     const data = doc.data();
     const sliderContainer = document.createElement("div");

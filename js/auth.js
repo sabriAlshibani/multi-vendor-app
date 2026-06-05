@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
+  createUserWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
 import {
@@ -52,3 +53,27 @@ async function handleLogout() {
 if (signOutBtn) {
   signOutBtn.addEventListener("click", handleLogout);
 }
+
+
+async function handleEmailSignUp(event) {
+  event.preventDefault();
+  const email = document.getElementById("email").value
+  const password = document.getElementById("password").value
+  try {
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+    if (result.user) {
+      window.location.href = "index.html";
+    }
+  }
+  catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+  }
+}
+const formSection = document.querySelector("#login-form");
+if (formSection) {
+  formSection.addEventListener("submit", handleEmailSignUp);
+}
+

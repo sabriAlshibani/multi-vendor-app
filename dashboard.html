@@ -7,16 +7,27 @@
   <title>dashboard</title>
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css//dashboard.css" />
+  <link rel="icon" href="images/logo.png" />
+
 </head>
 
 <body>
   <div class="dashboard-container">
     <nav class="dash-nav">
-      <div class="nav-title">لوحة التحكم</div>
+      <div class="nav-left">
+        <button class="dash-hamburger" id="dash-hamburger">
+          <svg viewBox="0 0 100 80" width="24" height="24" fill="var(--primary-color)">
+            <rect width="100" height="15"></rect>
+            <rect y="30" width="100" height="15"></rect>
+            <rect y="60" width="100" height="15"></rect>
+          </svg>
+        </button>
+        <div class="nav-title">لوحة التحكم</div>
+      </div>
       <div class="nav-actions">
         <div class="admin-profile">
           <img src="/images/account-icon.png" alt="Admin" />
-          <span>المسؤول</span>
+          <span class="admin-name">المسؤول</span>
         </div>
         <button class="exit-btn">خروج</button>
       </div>
@@ -87,6 +98,185 @@
               <button type="submit">انشاء</button>
             </div>
           </form>
+        </section>
+
+        <section class="users-section" style="margin-top: 30px;">
+          <div class="card-header">
+            <h2 class="label">البنرات الحالية</h2>
+          </div>
+          <div class="card-body">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>الصورة</th>
+                  <th>العناوين</th>
+                  <th>الوصف</th>
+                  <th>الرابط</th>
+                  <th>الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="banners-table-body">
+                <!-- Banners will be injected here -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </template>
+      <template id="users-template">
+        <section class="users-section">
+          <div class="card-header">
+            <h2 class="label">إدارة المستخدمين</h2>
+          </div>
+          <div class="card-body">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>المستخدم</th>
+                  <th>البريد الإلكتروني</th>
+                  <th>الدور</th>
+                  <th>الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="users-table-body">
+                <!-- Users will be injected here -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </template>
+      <template id="categories-template">
+        <section class="banner-inputs">
+          <div class="header">
+            <h2 class="label">إضافة صنف جديد</h2>
+          </div>
+          <form id="category_form">
+            <div class="create-and-link" style="margin-bottom: 20px;">
+              <input type="text" placeholder="اسم الصنف" id="category_name" required />
+            </div>
+            <div class="image-box">
+              <input type="file" id="category_image" required />
+              <img src="/images/upload-icon.png" alt="" class="upload-icon">
+              <img src="" id="category_image_preview" class="image-preview" />
+            </div>
+            <div class="create-and-link" style="margin-top: 20px;">
+              <button type="submit" style="flex: 1;">إضافة الصنف</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="users-section" style="margin-top: 30px;">
+          <div class="card-header">
+            <h2 class="label">الأصناف الحالية</h2>
+          </div>
+          <div class="card-body">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>الصورة</th>
+                  <th>اسم الصنف</th>
+                  <th>الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="categories-table-body">
+                <!-- Categories will be injected here -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </template>
+      <template id="products-template">
+        <section class="banner-inputs">
+          <div class="header">
+            <h2 class="label">إضافة منتج جديد</h2>
+          </div>
+          <form id="product_form">
+            <div class="titles">
+              <input type="text" placeholder="اسم المنتج" id="product_name" required />
+              <input type="number" placeholder="السعر" id="product_price" required />
+            </div>
+            <div class="create-and-link" style="margin-top: 20px;">
+              <select id="product_category" required style="width: 100%; padding: 16px 20px; font-size: 16px; border: 1px solid var(--border-color); border-radius: 8px; outline: none; background: var(--bg-white);">
+                <option value="" disabled selected>اختر الصنف</option>
+                <!-- Categories will be injected here -->
+              </select>
+            </div>
+            <textarea id="product_description" class="description-input" placeholder="وصف المنتج" style="margin-top: 20px;" required></textarea>
+            <div class="image-box" style="margin-top: 20px;">
+              <input type="file" id="product_image" required />
+              <img src="/images/upload-icon.png" alt="" class="upload-icon">
+              <img src="" id="product_image_preview" class="image-preview" />
+            </div>
+            <div class="create-and-link" style="margin-top: 20px;">
+              <button type="submit" style="flex: 1;">إضافة المنتج</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="users-section" style="margin-top: 30px;">
+          <div class="card-header">
+            <h2 class="label">المنتجات الحالية</h2>
+          </div>
+          <div class="card-body">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>الصورة</th>
+                  <th>اسم المنتج</th>
+                  <th>السعر</th>
+                  <th>الصنف</th>
+                  <th>الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="products-table-body">
+                <!-- Products will be injected here -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </template>
+      <template id="markets-template">
+        <section class="users-section">
+          <div class="card-header">
+            <h2 class="label">إدارة المتاجر (البائعين)</h2>
+          </div>
+          <div class="card-body">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>اسم المتجر / البائع</th>
+                  <th>البريد الإلكتروني</th>
+                  <th>الحالة</th>
+                  <th>الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="markets-table-body">
+                <!-- Markets will be injected here -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </template>
+      <template id="orders-template">
+        <section class="users-section">
+          <div class="card-header">
+            <h2 class="label">إدارة الطلبات</h2>
+          </div>
+          <div class="card-body">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>رقم الطلب</th>
+                  <th>العميل</th>
+                  <th>المبلغ الإجمالي</th>
+                  <th>الحالة</th>
+                  <th>تغيير الحالة</th>
+                </tr>
+              </thead>
+              <tbody id="orders-table-body">
+                <!-- Orders will be injected here -->
+              </tbody>
+            </table>
+          </div>
         </section>
       </template>
     </main>

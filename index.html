@@ -1,239 +1,245 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>الربط مع Firebase</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="images/logo.png" />
-  </head>
 
-  <body>
-    <header class="header">
-      <div class="top-nav">
-        <div class="container">
-          <!-- PHONE NUMBER -->
-          <p class="phoneNumber">+967770000000</p>
-          <!-- TOP NAV MENUS -->
-          <div class="top-nav-menues">
-            <!-- LANGUAGE MENU -->
-            <div class="language-menu">
-              <div class="lg-icon">
-                <button class="lg-button">اللغة</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>اوفر متعددالبايعين</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="icon" href="images/logo.png" />
+</head>
 
-                <div class="lg-content menu hidden">
-                  <button class="lg-item menu-item">العربية</button>
-                  <button class="lg-item menu-item">الإنجليزية</button>
-                  <button class="lg-item menu-item">الفرنسية</button>
-                </div>
-              </div>
-            </div>
+<body>
+  <header class="header">
+    <div class="top-nav">
+      <div class="container">
+        <!-- PHONE NUMBER -->
+        <p class="phoneNumber">+967770000000</p>
+        <!-- TOP NAV MENUS -->
+        <div class="top-nav-menues">
+          <!-- LANGUAGE MENU -->
+          <div class="language-menu">
+            <div class="lg-icon">
+              <button class="lg-button">اللغة</button>
 
-            <!-- MONEY MENU -->
-            <div class="money-menu">
-              <div class="lg-icon">
-                <button class="m-button">العملة</button>
-
-                <div class="m-content menu hidden">
-                  <button class="m-item menu-item">USD</button>
-                  <button class="m-item menu-item">SAR</button>
-                  <button class="m-item menu-item">RYL</button>
-                </div>
+              <div class="lg-content menu hidden">
+                <button class="lg-item menu-item">العربية</button>
+                <button class="lg-item menu-item">الإنجليزية</button>
+                <button class="lg-item menu-item">الفرنسية</button>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="mid-nav">
-        <div class="container">
-          <!-- LOGO -->
-          <div class="logo">
-            <a href="">
-              <img src="images/logo.png" alt="" />
-            </a>
-          </div>
+          <!-- MONEY MENU -->
+          <div class="money-menu">
+            <div class="lg-icon">
+              <button class="m-button">العملة</button>
 
-          <!-- SEARCH BAR -->
-          <div class="search-bar">
-            <input type="text" placeholder="ابحث هنا" />
-            <button>بحث</button>
-          </div>
-
-          <!-- NAVBAR ICONS -->
-          <div class="mid-nav-icons">
-            <div class="icon heart">
-              <img src="images/heart-icon.png" alt="" />
+              <div class="m-content menu hidden">
+                <button class="m-item menu-item">USD</button>
+                <button class="m-item menu-item">SAR</button>
+                <button class="m-item menu-item">RYL</button>
+              </div>
             </div>
-
-            <div class="icon cart">
-              <img src="images/cart.png" alt="" />
-            </div>
-
-            <div class="icon account">
-              <img src="images/account-icon.png" alt="" />
-            </div>
-          </div>
-          <div class="account-menu menu hidden">
-            <button id="logout-btn" class="menu-item">
-              <img src="/images/logout-icon.png" alt="" />
-              تسجيل الخروج
-            </button>
-
-            <button class="menu-item">
-              <img src="/images/information-icon.png" alt="" />
-              معلومات الحساب
-            </button>
-            <button id="dashboard-btn" class="menu-item hidden">
-              <img src="/images/dashboard-icon.png" alt="" />
-              لوحة التخكم
-            </button>
           </div>
         </div>
       </div>
+    </div>
 
-      <nav class="nav">
-        <div class="container">
-          <!-- HAMBURGER BUTTON -->
-          <button class="hamburger-btn" id="hamburger-btn">
-             <svg viewBox="0 0 100 80" width="30" height="30" fill="white">
-                <rect width="100" height="15"></rect>
-                <rect y="30" width="100" height="15"></rect>
-                <rect y="60" width="100" height="15"></rect>
-             </svg>
+    <div class="mid-nav">
+      <div class="container">
+        <!-- LOGO -->
+        <div class="logo">
+          <a href="">
+            <img src="images/logo.png" alt="" />
+          </a>
+        </div>
+
+        <!-- SEARCH BAR -->
+        <div class="search-bar">
+          <input type="text" placeholder="ابحث هنا" />
+          <button>بحث</button>
+        </div>
+
+        <!-- NAVBAR ICONS -->
+        <div class="mid-nav-icons">
+          <div class="icon heart">
+            <img src="images/heart-icon.png" alt="" />
+          </div>
+
+          <div class="icon cart">
+            <img src="images/cart.png" alt="" />
+          </div>
+
+          <div class="icon account">
+            <img src="images/account-icon.png" alt="" />
+          </div>
+        </div>
+        <div class="account-menu menu hidden">
+          <button id="logout-btn" class="menu-item">
+            <img src="/images/logout-icon.png" alt="" />
+            تسجيل الخروج
           </button>
 
-          <!-- NAVIGATION LINKS -->
-          <ul class="navigation">
-            <li><a href="">الرئيسية</a></li>
-            <li><a href="">العروض</a></li>
-            <li><a href="">الأقسام</a></li>
-            <li><a href="">وصل حديثًا</a></li>
-            <li><a href="">الأكثر مبيعًا</a></li>
-            <li><a href="">تتبع الطلب</a></li>
-          </ul>
-
-          <!-- CATEGORY BUTTON -->
-          <button class="cate-button">
-            <div>
-              <img src="images/categories-icon.png" alt="" />
-              الأصناف
-            </div>
-
-            <img src="images/arrow-down-icon.png" alt="" />
+          <button class="menu-item">
+            <img src="/images/information-icon.png" alt="" />
+            معلومات الحساب
+          </button>
+          <button id="dashboard-btn" class="menu-item hidden">
+            <img src="/images/dashboard-icon.png" alt="" />
+            لوحة التخكم
           </button>
         </div>
-      </nav>
-    </header>
+      </div>
+    </div>
 
-    <section class="hero-area">
-      <div class="hero-sliders">
-        <!-- PREVIOUS BUTTON -->
-        <button class="slider-btn prev hidden">
-          <img src="images/arrow-right-icon.png" alt="" />
+    <nav class="nav">
+      <div class="container">
+        <!-- HAMBURGER BUTTON -->
+        <button class="hamburger-btn" id="hamburger-btn">
+          <svg viewBox="0 0 100 80" width="30" height="30" fill="white">
+            <rect width="100" height="15"></rect>
+            <rect y="30" width="100" height="15"></rect>
+            <rect y="60" width="100" height="15"></rect>
+          </svg>
         </button>
-        <div id="loading-container" class="loader-container">
-          <div class="spinner"></div>
-          <p>Loading data...</p>
-        </div>
-        <div class="online-status hidden">
-          <div class="status-message">
-            <img src="/images/warning-icon.png" alt="" />
-            <h3 class="status-text">ليس هناك اتصل بالانترنت</h3>
+
+        <!-- NAVIGATION LINKS -->
+        <ul class="navigation">
+          <li><a href="">الرئيسية</a></li>
+          <li><a href="">العروض</a></li>
+          <li><a href="">الأقسام</a></li>
+          <li><a href="">وصل حديثًا</a></li>
+          <li><a href="">الأكثر مبيعًا</a></li>
+          <li><a href="">تتبع الطلب</a></li>
+        </ul>
+
+        <!-- CATEGORY BUTTON -->
+        <button class="cate-button">
+          <div>
+            <img src="images/categories-icon.png" alt="" />
+            الأصناف
           </div>
-        </div>
-        <div class="slider-wrapper">
-          <div class="slider-track hidden"></div>
-        </div>
 
-        <!-- NEXT BUTTON -->
-        <button class="slider-btn next hidden">
-          <img src="images/arrow-left-icon.png" alt="" />
+          <img src="images/arrow-down-icon.png" alt="" />
         </button>
+      </div>
+    </nav>
+  </header>
 
-        <!-- SLIDER DOTS -->
-        <div class="slider-dots"></div>
+  <section class="hero-area">
+    <div class="hero-sliders">
+      <!-- PREVIOUS BUTTON -->
+      <button class="slider-btn prev hidden">
+        <img src="images/arrow-right-icon.png" alt="" />
+      </button>
+      <div id="loading-container" class="loader-container">
+        <div class="spinner"></div>
+        <p>Loading data...</p>
+      </div>
+      <div class="online-status hidden">
+        <div class="status-message">
+          <img src="/images/warning-icon.png" alt="" />
+          <h3 class="status-text">ليس هناك اتصل بالانترنت</h3>
+        </div>
+      </div>
+      <div class="slider-wrapper">
+        <div class="slider-track hidden"></div>
       </div>
 
-      <!-- =========================
+      <!-- NEXT BUTTON -->
+      <button class="slider-btn next hidden">
+        <img src="images/arrow-left-icon.png" alt="" />
+      </button>
+
+      <!-- SLIDER DOTS -->
+      <div class="slider-dots"></div>
+    </div>
+
+    <!-- =========================
            CATEGORY SIDEBAR
       ========================== -->
-      <aside class="category-sidebar">
-        <!-- CATEGORY ITEM -->
-        <div class="cate-item">
-          <img src="images/t-shirt-icon.png" class="cate-icon" />
-          <p>ملابس رجالية</p>
-          <img src="images/arrow-left-icon.png" class="arrow-icon" />
-        </div>
+    <aside class="category-sidebar">
+      <!-- CATEGORY ITEM -->
+      <div class="cate-item">
+        <img src="images/t-shirt-icon.png" class="cate-icon" />
+        <p>ملابس رجالية</p>
+        <img src="images/arrow-left-icon.png" class="arrow-icon" />
+      </div>
 
-        <!-- CATEGORY ITEM -->
-        <div class="cate-item">
-          <img src="images/t-shirt-icon.png" class="cate-icon" />
-          <p>ملابس رجالية</p>
-          <img src="images/arrow-left-icon.png" class="arrow-icon" />
-        </div>
+      <!-- CATEGORY ITEM -->
+      <div class="cate-item">
+        <img src="images/t-shirt-icon.png" class="cate-icon" />
+        <p>ملابس رجالية</p>
+        <img src="images/arrow-left-icon.png" class="arrow-icon" />
+      </div>
 
-        <!-- CATEGORY ITEM -->
-        <div class="cate-item">
-          <img src="images/t-shirt-icon.png" class="cate-icon" />
-          <p>ملابس رجالية</p>
-          <img src="images/arrow-left-icon.png" class="arrow-icon" />
-        </div>
+      <!-- CATEGORY ITEM -->
+      <div class="cate-item">
+        <img src="images/t-shirt-icon.png" class="cate-icon" />
+        <p>ملابس رجالية</p>
+        <img src="images/arrow-left-icon.png" class="arrow-icon" />
+      </div>
 
-        <!-- CATEGORY ITEM -->
-        <div class="cate-item">
-          <img src="images/t-shirt-icon.png" class="cate-icon" />
-          <p>ملابس رجالية</p>
-          <img src="images/arrow-left-icon.png" class="arrow-icon" />
-        </div>
+      <!-- CATEGORY ITEM -->
+      <div class="cate-item">
+        <img src="images/t-shirt-icon.png" class="cate-icon" />
+        <p>ملابس رجالية</p>
+        <img src="images/arrow-left-icon.png" class="arrow-icon" />
+      </div>
 
-        <!-- CATEGORY ITEM -->
-        <div class="cate-item">
-          <img src="images/t-shirt-icon.png" class="cate-icon" />
-          <p>ملابس رجالية</p>
-          <img src="images/arrow-left-icon.png" class="arrow-icon" />
-        </div>
+      <!-- CATEGORY ITEM -->
+      <div class="cate-item">
+        <img src="images/t-shirt-icon.png" class="cate-icon" />
+        <p>ملابس رجالية</p>
+        <img src="images/arrow-left-icon.png" class="arrow-icon" />
+      </div>
 
-        <!-- CATEGORY ITEM -->
-        <div class="cate-item">
-          <img src="images/t-shirt-icon.png" class="cate-icon" />
-          <p>ملابس رجالية</p>
-          <img src="images/arrow-left-icon.png" class="arrow-icon" />
-        </div>
+      <!-- CATEGORY ITEM -->
+      <div class="cate-item">
+        <img src="images/t-shirt-icon.png" class="cate-icon" />
+        <p>ملابس رجالية</p>
+        <img src="images/arrow-left-icon.png" class="arrow-icon" />
+      </div>
 
-        <!-- CATEGORY ITEM -->
-        <div class="cate-item">
-          <img src="images/t-shirt-icon.png" class="cate-icon" />
-          <p>ملابس رجالية</p>
-          <img src="images/arrow-left-icon.png" class="arrow-icon" />
-        </div>
+      <!-- CATEGORY ITEM -->
+      <div class="cate-item">
+        <img src="images/t-shirt-icon.png" class="cate-icon" />
+        <p>ملابس رجالية</p>
+        <img src="images/arrow-left-icon.png" class="arrow-icon" />
+      </div>
 
-        <!-- CATEGORY ITEM -->
-        <div class="cate-item">
-          <img src="images/t-shirt-icon.png" class="cate-icon" />
-          <p>ملابس رجالية</p>
-          <img src="images/arrow-left-icon.png" class="arrow-icon" />
-        </div>
+      <!-- CATEGORY ITEM -->
+      <div class="cate-item">
+        <img src="images/t-shirt-icon.png" class="cate-icon" />
+        <p>ملابس رجالية</p>
+        <img src="images/arrow-left-icon.png" class="arrow-icon" />
+      </div>
 
-        <!-- CATEGORY ITEM -->
-        <div class="cate-item">
-          <img src="images/t-shirt-icon.png" class="cate-icon" />
-          <p>ملابس رجالية</p>
-          <img src="images/arrow-left-icon.png" class="arrow-icon" />
-        </div>
+      <!-- CATEGORY ITEM -->
+      <div class="cate-item">
+        <img src="images/t-shirt-icon.png" class="cate-icon" />
+        <p>ملابس رجالية</p>
+        <img src="images/arrow-left-icon.png" class="arrow-icon" />
+      </div>
 
-        <!-- CATEGORY ITEM -->
-        <div class="cate-item">
-          <img src="images/t-shirt-icon.png" class="cate-icon" />
-          <p>ملابس رجالية</p>
-          <img src="images/arrow-left-icon.png" class="arrow-icon" />
-        </div>
-      </aside>
-    </section>
+      <!-- CATEGORY ITEM -->
+      <div class="cate-item">
+        <img src="images/t-shirt-icon.png" class="cate-icon" />
+        <p>ملابس رجالية</p>
+        <img src="images/arrow-left-icon.png" class="arrow-icon" />
+      </div>
+    </aside>
+  </section>
+  <div class="vendor-message-hidden">
+    <h3>مرحبا بك</h3>
+    <p>يرجى انشاء متجرك لتبدا البيع</p>
+    <button onclick="window.location.href='create-vendor-page.html'">انشاء متجر</button>
+  </div>
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/auth-guard.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
 
-    <script type="module" src="js/firebase-config.js"></script>
-    <script type="module" src="js/auth-guard.js"></script>
-    <script type="module" src="js/auth.js"></script>
-    <script type="module" src="js/main.js"></script>
-  </body>
 </html>
